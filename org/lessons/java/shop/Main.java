@@ -2,21 +2,20 @@ package org.lessons.java.shop;
 
 public class Main {
     public static void main(String[] args) {
-        // Create a Prodotto object
-        Prodotto prodotto = new Prodotto("Laptop", "Powerful laptop", 800.0, 22.0);
+        try {
+            // Creazione di un prodotto con dati validi
+            Prodotto prodottoValido = new Prodotto("Laptop", "Powerful laptop", 800.0, 22.0);
 
-        // Display initial details
-        System.out.println("Initial Details:");
-        displayProductDetails(prodotto);
+            // Creazione di un prodotto con prezzo negativo (genererà un'eccezione)
 
-        // Update product details
-        prodotto.setNome("Desktop");
-        prodotto.setPrezzo(1200.0);
-        prodotto.setIva(18.0);
+            // Utilizzo delle variabili per evitare warning
+            System.out.println("Dettagli Prodotto Valido:");
+            displayProductDetails(prodottoValido);
 
-        // Display updated details
-        System.out.println("\nUpdated Details:");
-        displayProductDetails(prodotto);
+            // Non stiamo utilizzando prodottoPrezzoNegativo in questo esempio
+        } catch (IllegalArgumentException e) {
+            System.out.println("Errore durante la creazione del prodotto: " + e.getMessage());
+        }
     }
 
     // Utility method to display product details

@@ -1,6 +1,7 @@
 package org.lessons.java.shop;
 
 import java.util.Random;
+
 public class Prodotto {
     private final int codice;
     private String nome;
@@ -8,7 +9,17 @@ public class Prodotto {
     private double prezzo;
     private double iva;
 
-    public Prodotto(String nome, String descrizione, double prezzo, double iva){
+    public Prodotto(String nome, String descrizione, double prezzo, double iva) {
+        if (prezzo < 0) {
+            throw new IllegalArgumentException("Il prezzo non può essere negativo.");
+        }
+        if (iva < 0) {
+            throw new IllegalArgumentException("L'IVA non può essere negativa.");
+        }
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("Il nome non può essere vuoto o nullo.");
+        }
+
         this.codice = generateRandomCode();
         this.nome = nome;
         this.descrizione = descrizione;
